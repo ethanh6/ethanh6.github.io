@@ -6,7 +6,7 @@
 
 ### Image
 
-![Dog image](https://www.google.com/search?q=dog&sxsrf=ALeKk02esTh9Mch-iSoBgQwqfaIx4Q3hHg:1610133683840&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiAjpCyh43uAhU5yIsBHfQFBgcQ_AUoAXoECAUQAw&biw=1371&bih=619#imgrc=wzRcY9R2ANhK-M, "Cute dog!")
+![Dog image](https://i.insider.com/5ef54cb61918242cfb4ec653?width=1000&format=jpeg&auto=webp, "Cute dog!")
 
 
 ### Link
