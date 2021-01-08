@@ -2,4 +2,4 @@
 
 ## Hi, I'm Ethan, nice to see you!
 
-### [Go to index.md](./README.md)
+### [Go to index.md](./index.md)
