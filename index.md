@@ -20,14 +20,14 @@
 - ***This is even more important***
 
 
-## To quote:
+### To quote:
 
 The Queen's Gambit:
 
 > The strongest person is the person who isn't scared to be alone.
 
 
-## To quote a code:
+### To quote a code:
 
 You can use `git push origin master` to push master to origin (local to remote).
 
