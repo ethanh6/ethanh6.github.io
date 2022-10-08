@@ -2,7 +2,7 @@ import React from 'react';
 import { Title, Text, Container, Grid, Link, Card } from '@components';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { getExperience, ExperienceEntry } from '../lib/notion/experience';
+import { EXPERIENCES, ExperienceEntry } from '../../posts/notion';
 
 import {
   SiCplusplus,
@@ -219,7 +219,6 @@ export const getStaticProps: GetStaticProps = async () => {
   experience.sort((a, b) => {
     return b.Order - a.Order;
   });
-
   return {
     props: {
       experience,
