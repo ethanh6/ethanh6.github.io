@@ -2,8 +2,9 @@ import React from 'react';
 import { Title, Text, Container, Grid, Link, Card } from '@components';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { EXPERIENCES, ExperienceEntry } from '../../posts/notion';
+import { ExperienceProps, getExperiences } from '../../posts/experiences/index';
 
+// https://react-icons.github.io/react-icons/icons?name=si
 import {
   SiCplusplus,
   SiTypescript,
@@ -27,13 +28,7 @@ import {
 /* import { getPosts, Post } from '@posts'; */
 import { TransparentLink } from '@components';
 
-interface AboutProps {
-  experience: ExperienceEntry[];
-}
-
-// https://react-icons.github.io/react-icons/icons?name=si
-
-const About = ({ experience }: AboutProps): JSX.Element => {
+const About = ({ experiences }: ExperienceProps[]): JSX.Element => {
   const stacks = React.useMemo(
     () => [
       {
@@ -124,7 +119,6 @@ const About = ({ experience }: AboutProps): JSX.Element => {
           <Text>I&apos;m a software engineer living in Taipei.</Text>
         </Container>
       </Container>
-
       <Container
         alignContent="center"
         alignItems="center"
@@ -137,8 +131,9 @@ const About = ({ experience }: AboutProps): JSX.Element => {
           Experiences
         </Title>
         <Container width="100%">
-          {experience.map(({ Description, Name, DateSlug, Slug }, i) => (
-            <TransparentLink href={`/about/`} key={Slug}>
+          {experiences.map(({ data }, i) => (
+            /* Description, Name, Slug, DateSlug, Order  */
+            <TransparentLink href={`/about/`} key={i}>
               <Grid
                 key={i}
                 gridTemplateColumns="1fr 4fr"
@@ -148,7 +143,7 @@ const About = ({ experience }: AboutProps): JSX.Element => {
                 borderBottom="1px solid rgba(0,0,0,0.1)"
               >
                 <Container width="100%">
-                  <Text>{experience.length - i - 1}</Text>
+                  <Text>{experiences.length - i - 1}</Text>
                 </Container>
                 <Grid width="100%" gridTemplateColumns="4fr 1fr">
                   <Container
@@ -164,17 +159,17 @@ const About = ({ experience }: AboutProps): JSX.Element => {
                       gridGap="1rem"
                     >
                       <Title fontSize="1.3rem" margin={0} as="h3">
-                        {Name}
+                        {data.Name}
                       </Title>
                       <Text
                         fontSize="smaller"
                         margin={0}
                         color="rgba(0, 0, 0, 0.1)"
                       >
-                        {DateSlug}
+                        {data.DateSlug}
                       </Text>
                     </Grid>
-                    <Text fontSize="1rem">{Description}</Text>
+                    <Text fontSize="1rem">{data.Description}</Text>
                   </Container>
                   <Text fontSize="1.5rem">&rarr;</Text>
                 </Grid>
@@ -215,13 +210,15 @@ const About = ({ experience }: AboutProps): JSX.Element => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const experience = await getExperience();
-  experience.sort((a, b) => {
-    return b.Order - a.Order;
-  });
+  /* const experience = await getExperience(); */
+  /* Experiences.sort((a, b) => { */
+  /*   return b.Order - a.Order; */
+  /* }); */
+  const experiences = await getExperiences();
+
   return {
     props: {
-      experience,
+      experiences,
     },
   };
 };
