@@ -210,12 +210,8 @@ const About = ({ experiences }: ExperienceProps[]): JSX.Element => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  /* const experience = await getExperience(); */
-  /* Experiences.sort((a, b) => { */
-  /*   return b.Order - a.Order; */
-  /* }); */
   const experiences = await getExperiences();
-
+  experiences.sort((a, b) => b.data.Order - a.data.Order);
   return {
     props: {
       experiences,
