@@ -2,7 +2,7 @@ import React from 'react';
 import { Title, Text, Container, Grid, Link, Card } from '@components';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { ExperienceProps, getExperiences } from '../../posts/experiences/index';
+import { getPosts } from '../../lib/api';
 
 // https://react-icons.github.io/react-icons/icons?name=si
 import {
@@ -28,7 +28,7 @@ import {
 /* import { getPosts, Post } from '@posts'; */
 import { TransparentLink } from '@components';
 
-const About = ({ experiences }: ExperienceProps[]): JSX.Element => {
+const About = ({ experiences }): JSX.Element => {
   const stacks = React.useMemo(
     () => [
       {
@@ -131,9 +131,9 @@ const About = ({ experiences }: ExperienceProps[]): JSX.Element => {
           Experiences
         </Title>
         <Container width="100%">
-          {experiences.map(({ data }, i) => (
+          {experiences.map(({ data }, i: number) => (
             /* Description, Name, Slug, DateSlug, Order  */
-            <TransparentLink href={`/about/`} key={i}>
+            <TransparentLink href={`/about/${data.Slug}`} key={i}>
               <Grid
                 key={i}
                 gridTemplateColumns="1fr 4fr"
@@ -210,7 +210,7 @@ const About = ({ experiences }: ExperienceProps[]): JSX.Element => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const experiences = await getExperiences();
+  const experiences = await getPosts('experiences');
   experiences.sort((a, b) => b.data.Order - a.data.Order);
   return {
     props: {

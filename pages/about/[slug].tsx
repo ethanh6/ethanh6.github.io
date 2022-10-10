@@ -1,77 +1,112 @@
 import { GetStaticPaths, GetStaticPropsResult, NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import { NotionRenderer } from 'react-notion-x';
-import { NotionAPI } from 'notion-client';
 import Head from 'next/head';
-import { getPageInfo, Page, EXPERIENCES } from '@posts/notion';
-import { Container } from '@components';
+/* import { getPageInfo, Page, EXPERIENCES } from '@posts/notion'; */
+/* import { Container } from '@components'; */
 import { ComponentProps } from 'react';
+import { getPosts } from '../../lib/api';
+import { Container, Title, Text } from '@components';
+import { serialize } from 'next-mdx-remote/serialize';
+import { MDXRemote } from 'next-mdx-remote';
 
-const Code = dynamic(
-  async () => (await import('react-notion-x/build/third-party/code')).Code,
-);
-
-interface BlogProps {
-  page: Page;
-  recordMap: ComponentProps<typeof NotionRenderer>['recordMap'];
-}
-
-const About: NextPage<BlogProps> = ({ page, recordMap }) => (
+const About = ({ data, content }) => (
   <Container
     width={['100%', 1200]}
     maxWidth="100vw"
     marginBottom={['1rem', '4rem']}
   >
     <Head>
-      <title>{page.title}</title>
-      <meta property="og:title" content={page.title} />
+      <title>{data.Name}</title>
+      <meta property="og:title" content={data.Title} />
     </Head>
-    <NotionRenderer
-      fullPage
-      className="notion-container"
-      recordMap={recordMap}
-      components={{
-        Code,
-      }}
-    />
+
+    <Container alignItems="center" mb="2rem">
+      <Container flexDirection="row" gridColumnGap="1rem" gridRowGap=".2rem">
+        {data.Tags.map((tag: string) => (
+          <Text fontSize="small" color="plum" key={tag} m="0">
+            #{tag}
+          </Text>
+        ))}
+      </Container>
+
+      <Title fontSize={['2rem']} textAlign="center">
+        {data.Name}
+      </Title>
+      <Title fontSize={['1.5rem']} textAlign="center">
+        {data.Description}
+      </Title>
+      <div>
+        <MDXRemote {...content} components={{ Text }} />
+      </div>
+      <Container
+        flexDirection="row"
+        gridGap="1.5rem"
+        alignItems="center"
+        mb="2rem"
+      >
+        <Text>{data.DateSlug}</Text>
+      </Container>
+      {/* <Container position="relative" width="100%" height="300px"> */}
+      {/*   <Image */}
+      {/*     src={experience.data.image} */}
+      {/*     alt={experience.data.title} */}
+      {/*     layout="fill" */}
+      {/*     objectFit="cover" */}
+      {/*     placeholder="blur" */}
+      {/*     blurDataURL={experience.data.blurImage} */}
+      {/*   /> */}
+      {/* </Container> */}
+      <Container mt="1rem" gridGap="1rem">
+        <Container
+          pl="2rem"
+          backgroundColor="rgb(241, 241, 239)"
+          borderRadius="3px"
+        >
+          <Text as="h3" fontWeight="normal">
+            {content}
+          </Text>
+        </Container>
+        <Text m="0" fontSize="smaller" textAlign="center">
+          {data.Stack.join(', ')}
+        </Text>
+      </Container>
+    </Container>
   </Container>
 );
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const experiences = await getPosts('experiences');
+  experiences.sort((a, b) => b.data.Order - a.data.Order);
+  const paths = experiences.map((obj) => ({ params: { slug: obj.data.Slug } }));
   return {
-    paths: Object.keys(EXPERIENCES).map((slug) => ({
-      params: {
-        slug,
-      },
-    })),
+    paths: paths,
     fallback: false,
   };
 };
 
-type Params = {
-  params: {
-    slug: keyof typeof EXPERIENCES;
-  };
-};
+/* type Params = { */
+/*   params: { */
+/*     slug: keyof typeof EXPERIENCES; */
+/*   }; */
+/* }; */
 
-const notion = new NotionAPI();
+export const getStaticProps = async ({ params }) => {
+  const experiences = await getPosts('experiences');
+  experiences.sort((a, b) => b.data.Order - a.data.Order);
+  const experience = experiences.find(({ data }) => data.Slug === params?.slug);
 
-export const getStaticProps = async ({
-  params: { slug },
-}: Params): Promise<GetStaticPropsResult<BlogProps>> => {
-  const { uri, date } = EXPERIENCES[slug];
-  const recordMap = await notion.getPage(uri);
-  const pageInfo = getPageInfo(recordMap);
-  const page: Page = {
-    ...pageInfo,
-    uri,
-    date,
-  };
+  if (!experience) {
+    return {
+      notFound: true,
+    };
+  }
 
+  const data = experience.data;
+  const content = await serialize(experience.content);
   return {
     props: {
-      page,
-      recordMap,
+      data,
+      content,
     },
   };
 };
