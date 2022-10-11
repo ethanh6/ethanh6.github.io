@@ -3,96 +3,78 @@ import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { Render } from '@9gustin/react-notion-render';
 import { ComponentProps } from 'react';
-import {
-  getAllBlogSlugs,
-  queryPagesInDatabase,
-  BlogEntry,
-  getBlogBySlug,
-  getBlocks,
-  parseBlogInJSON,
-} from '../../lib/notion/blog';
-import { getEnvironmentVariable } from '../../lib/';
+import { BlogEntry } from '../../lib/notion/blog';
 import { Title, Text, Container, Grid, Link, Card } from '@components';
-
-const BLOG_DB_ID: string = getEnvironmentVariable('NOTION_BLOG_DATABASE_ID');
+import { Separator, MDXContent } from '@components';
+import { getPosts } from '../../lib/api';
 
 interface BlogProps extends BlogEntry {
   recordMap: ComponentProps<typeof Render>;
   blocks: any;
 }
 
-const Blog: NextPage<BlogProps> = ({
-  id,
-  name,
-  date,
-  slug,
-  series,
-  tags,
-  blocks,
-}) => (
-  <Container width={['100%', 1200]} maxWidth="100vw">
+const Blog = ({ data, source }) => (
+  <Container width={['100%', 1200]} maxWidth="200vw">
     <Head>
-      <title>{name}</title>
-      <meta property="og:title" content={name} />
+      <title>{data.Title}</title>
+      <meta property="og:title" content={data.Title} />
     </Head>
     <Container alignContent="center" alignItems="center" paddingBottom="4rem">
       <Container maxWidth={['100%', '720px']}>
         <Title fontSize="40px" as="h2">
-          {name}
+          {data.Title}
         </Title>
       </Container>
-      {/* <Container maxWidth={['100%', '720px']} marginY="2rem"> */}
-      {/*   <Render blocks={blocks} /> */}
-      {/* </Container> */}
-    </Container>
-    <Container textAlign="center" gridGap=".4rem" my="3rem">
-      <Text margin={0}>Ethan Huang - {date}</Text>
+      <Container mt="1rem" gridGap="1rem" width="61.8%">
+        <Container pl="2rem" borderRadius="3px" textAlign="left">
+          <MDXContent {...source} />
+          <Container
+            textAlign="center"
+            gridGap=".4rem"
+            my="3rem"
+            paddingBottom="1rem"
+          >
+            <Text margin={0}>
+              {data.Author} @ {data.Date}
+            </Text>
+          </Container>
+          <Separator />
+        </Container>
+      </Container>
     </Container>
   </Container>
 );
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const blog_response = await queryPagesInDatabase(BLOG_DB_ID);
-  const paths = getAllBlogSlugs(blog_response);
+  const blogs = await getPosts('blogs');
+  blogs.sort(
+    (a, b) => new Date(b.data.Date).getTime() - new Date(a.data.Date).getTime(),
+  );
+  const paths = blogs.map((obj) => ({ params: { slug: obj.data.Slug } }));
   return {
-    paths,
+    paths: paths,
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context: any) => {
-  const { slug } = context.params;
-  const blogMetaData = await getBlogBySlug(slug).then(parseBlogInJSON);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const blogs = await getPosts('blogs');
+  blogs.sort(
+    (a, b) => new Date(b.data.Date).getTime() - new Date(a.data.Date).getTime(),
+  );
+  const blog = blogs.find(({ data }) => data.Slug === params?.slug);
 
-  const blocks = await getBlocks(blogMetaData.id);
-  /**/
-  /* // Retrieve block children for nested blocks (one level deep), for example toggle blocks */
-  /* // https://developers.notion.com/docs/working-with-page-content#reading-nested-blocks */
-  /* const childBlocks = await Promise.all( */
-  /*   blocks */
-  /*     .filter((block: any) => block.has_children) */
-  /*     .map(async (block) => { */
-  /*       return { */
-  /*         id: block.id, */
-  /*         children: await getBlocks(block.id), */
-  /*       }; */
-  /*     }), */
-  /* ); */
-  /**/
-  /* const blocksWithChildren = blocks.map((block: any) => { */
-  /*   // Add child blocks if the block should contain children but none exists */
-  /*   if (block.has_children && !block[block.type].children) { */
-  /*     block[block.type]['children'] = childBlocks.find( */
-  /*       (x) => x.id === block.id, */
-  /*     )?.children; */
-  /*   } */
-  /*   return block; */
-  /* }); */
-
+  if (!blog) {
+    return {
+      notFound: true,
+    };
+  }
+  const data = blog.data;
+  const source = blog.source;
   return {
     props: {
-      ...blogMetaData,
-      blocks: blocks,
+      data,
+      source,
     },
   };
 };

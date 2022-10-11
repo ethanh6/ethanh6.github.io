@@ -166,7 +166,7 @@ const About = ({ experiences }): JSX.Element => {
                         margin={0}
                         color="rgba(0, 0, 0, 0.1)"
                       >
-                        {data.DateSlug}
+                        {data.Date}
                       </Text>
                     </Grid>
                     <Text fontSize="1rem">{data.Description}</Text>

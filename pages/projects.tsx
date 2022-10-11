@@ -6,7 +6,7 @@ import { GetStaticProps } from 'next';
 import { Title, Container, Text, Button, Grid, Link, List } from '@components';
 
 // import from /posts/index.tsx
-import { getPosts, Post } from '@posts';
+import { getPosts } from '../lib/api';
 
 interface ProjectProps {
   projects: Post[];

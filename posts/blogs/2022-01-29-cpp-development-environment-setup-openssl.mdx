@@ -1,0 +1,92 @@
+---
+Title: C++ development environment setup - OpenSSL
+Author: Ethan Huang
+Date: '2022-01-29'
+Slug: cpp-dev-env-setup-openssl
+Tags: [ security, programming, theory ]
+Stack: [ C++, OpenSSL ]
+Image:
+ImageUlt:
+Description: how I learned cryptography
+Series: Cryptography
+Order: 1
+---
+
+Install OpenSSL in Ubuntu 20.04
+
+```bash
+$ sudo apt-get install libssl-dev
+```
+
+<br />
+
+Test the installation
+```bash
+$ which openssl
+/usr/bin/openssl   ===> this should be the path
+$ openssl
+OpenSSL>           ===> this should open a openssl dialogue 
+```
+
+<br />
+
+Write a simple C++ file test.cpp to play with it
+
+```cpp
+#include <iostream>
+#include <openssl/evp.h>
+int main(int argc, char *argv[]){
+        std::cout << "Hello OpenSSL" << std::endl;
+        // load all SSL algorithm
+        OpenSSL_add_all_algorithms();
+        return 0;
+}
+```
+
+<br />
+
+Compile and test it:
+
+```bash
+$ g++ test.cpp -o test -lcrypto
+$ ./test
+Hello OpenSSL         ===> this should show the message
+```
+
+<br />
+
+Other OpenSSL Commands
+
+check the version
+
+```bash
+OpenSSL> version
+OpenSSL 1.1.1f  31 Mar 2020
+
+# add -a flag for a more detailed information
+```
+
+<br />
+
+list all encryption and decryption algorithms (in bash)
+
+```bash
+$ openssl enc -list
+-aes-128-cbc               -aes-128-cfb               -aes-128-cfb1
+-aes-128-cfb8              -aes-128-ctr               -aes-128-ecb
+-aes-128-ofb               -aes-192-cbc               -aes-192-cfb
+-aes-192-cfb1              -aes-192-cfb8              -aes-192-ctr
+-aes-192-ecb               -aes-192-ofb               -aes-256-cbc
+-aes-256-cfb               -aes-256-cfb1              -aes-256-cfb8
+-aes-256-ctr               -aes-256-ecb               -aes-256-ofb
+-aes128                    -aes128-wrap               -aes192
+-aes192-wrap               -aes256                    -aes256-wrap
+-aria-128-cbc              -aria-128-cfb              -aria-128-cfb1
+-aria-128-cfb8             -aria-128-ctr              -aria-128-ecb
+...
+```
+
+Reference
+[OpenSSL Documentation](https://www.openssl.org/docs/man1.1.1/man3/OpenSSL_add_all_algorithms.html)
+[OpenSSL Documentation](https://wiki.openssl.org/index.php/Enc)
+

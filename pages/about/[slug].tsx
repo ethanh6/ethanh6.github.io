@@ -40,7 +40,7 @@ const About = ({ data, source }) => (
         alignItems="center"
         mb="2rem"
       >
-        <Text>{data.DateSlug}</Text>
+        <Text>{data.Date}</Text>
       </Container>
       <Container position="relative" width="100%" height="300px">
         <Image
