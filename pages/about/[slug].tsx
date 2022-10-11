@@ -7,8 +7,6 @@ import { ComponentProps } from 'react';
 import { getPosts } from '../../lib/api';
 import { Container, Title, Text, Separator, MDXContent } from '@components';
 import Image from 'next/image';
-import { serialize } from 'next-mdx-remote/serialize';
-import { MDXRemote } from 'next-mdx-remote';
 
 const About = ({ data, source }) => (
   <Container
@@ -52,7 +50,6 @@ const About = ({ data, source }) => (
           objectFit="cover"
         />
       </Container>
-
       <Container mt="1rem" gridGap="1rem" width="61.8%">
         <Container pl="2rem" borderRadius="3px" textAlign="left">
           <MDXContent {...source} />
@@ -79,12 +76,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-/* type Params = { */
-/*   params: { */
-/*     slug: keyof typeof EXPERIENCES; */
-/*   }; */
-/* }; */
-
 export const getStaticProps = async ({ params }) => {
   const experiences = await getPosts('experiences');
   experiences.sort((a, b) => b.data.Order - a.data.Order);
@@ -95,9 +86,7 @@ export const getStaticProps = async ({ params }) => {
       notFound: true,
     };
   }
-
   const data = experience.data;
-  /* const content = await serialize(experience.content); */
   const source = experience.source;
   return {
     props: {
