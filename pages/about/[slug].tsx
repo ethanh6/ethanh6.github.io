@@ -5,11 +5,11 @@ import Head from 'next/head';
 /* import { Container } from '@components'; */
 import { ComponentProps } from 'react';
 import { getPosts } from '../../lib/api';
-import { Container, Title, Text } from '@components';
+import { Container, Title, Text, Separator, MDXContent } from '@components';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 
-const About = ({ data, content }) => (
+const About = ({ data, source }) => (
   <Container
     width={['100%', 1200]}
     maxWidth="100vw"
@@ -35,9 +35,9 @@ const About = ({ data, content }) => (
       <Title fontSize={['1.5rem']} textAlign="center">
         {data.Description}
       </Title>
-      <div>
-        <MDXRemote {...content} components={{ Text }} />
-      </div>
+      {/* <div> */}
+      {/*   <MDXRemote {...content} components={{ Text }} /> */}
+      {/* </div> */}
       <Container
         flexDirection="row"
         gridGap="1.5rem"
@@ -56,19 +56,19 @@ const About = ({ data, content }) => (
       {/*     blurDataURL={experience.data.blurImage} */}
       {/*   /> */}
       {/* </Container> */}
-      <Container mt="1rem" gridGap="1rem">
-        <Container
-          pl="2rem"
-          backgroundColor="rgb(241, 241, 239)"
-          borderRadius="3px"
-        >
-          <Text as="h3" fontWeight="normal">
-            {content}
+
+      <Container mt="1rem" gridGap="1rem" width="61.8%">
+        <Container pl="2rem" borderRadius="3px" textAlign="left">
+          <Separator />
+          <MDXContent {...source} />
+          <Separator />
+        </Container>
+
+        <Container mt="2rem" pl="2rem" borderRadius="3px" textAlign="center">
+          <Text m="0" fontSize="smaller">
+            {data.Stack.join(', ')}
           </Text>
         </Container>
-        <Text m="0" fontSize="smaller" textAlign="center">
-          {data.Stack.join(', ')}
-        </Text>
       </Container>
     </Container>
   </Container>
@@ -102,11 +102,12 @@ export const getStaticProps = async ({ params }) => {
   }
 
   const data = experience.data;
-  const content = await serialize(experience.content);
+  /* const content = await serialize(experience.content); */
+  const source = experience.source;
   return {
     props: {
       data,
-      content,
+      source,
     },
   };
 };
