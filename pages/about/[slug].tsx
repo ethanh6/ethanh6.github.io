@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { ComponentProps } from 'react';
 import { getPosts } from '../../lib/api';
 import { Container, Title, Text, Separator, MDXContent } from '@components';
+import Image from 'next/image';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 
@@ -35,9 +36,6 @@ const About = ({ data, source }) => (
       <Title fontSize={['1.5rem']} textAlign="center">
         {data.Description}
       </Title>
-      {/* <div> */}
-      {/*   <MDXRemote {...content} components={{ Text }} /> */}
-      {/* </div> */}
       <Container
         flexDirection="row"
         gridGap="1.5rem"
@@ -46,20 +44,17 @@ const About = ({ data, source }) => (
       >
         <Text>{data.DateSlug}</Text>
       </Container>
-      {/* <Container position="relative" width="100%" height="300px"> */}
-      {/*   <Image */}
-      {/*     src={experience.data.image} */}
-      {/*     alt={experience.data.title} */}
-      {/*     layout="fill" */}
-      {/*     objectFit="cover" */}
-      {/*     placeholder="blur" */}
-      {/*     blurDataURL={experience.data.blurImage} */}
-      {/*   /> */}
-      {/* </Container> */}
+      <Container position="relative" width="100%" height="300px">
+        <Image
+          src={data.Image}
+          alt={data.ImageUlt}
+          layout="fill"
+          objectFit="cover"
+        />
+      </Container>
 
       <Container mt="1rem" gridGap="1rem" width="61.8%">
         <Container pl="2rem" borderRadius="3px" textAlign="left">
-          <Separator />
           <MDXContent {...source} />
           <Separator />
         </Container>

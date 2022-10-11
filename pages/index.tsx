@@ -18,7 +18,7 @@ const Home = (): JSX.Element => (
     >
       <Container alignItems="center" alignContent="center">
         <Image
-          src="/mypic.jpeg"
+          src="/me.jpeg"
           alt="Ethan Huang"
           width="120px"
           height="120px"
