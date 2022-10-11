@@ -8,7 +8,7 @@ import { getPosts } from '../../lib/api';
 import { Container, Title, Text, Separator, MDXContent } from '@components';
 import Image from 'next/image';
 
-const About = ({ data, source }) => (
+const About = ({ data, source }: any) => (
   <Container
     width={['100%', 1200]}
     maxWidth="100vw"
@@ -76,10 +76,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: any) => {
   const experiences = await getPosts('experiences');
   experiences.sort((a, b) => b.data.Order - a.data.Order);
-  const experience = experiences.find(({ data }) => data.Slug === params?.slug);
+  const experience = experiences.find(
+    ({ data }: any) => data.Slug === params?.slug,
+  );
 
   if (!experience) {
     return {

@@ -13,7 +13,7 @@ interface BlogProps extends BlogEntry {
   blocks: any;
 }
 
-const Blog = ({ data, source }) => (
+const Blog = ({ data, source }: any) => (
   <Container width={['100%', 1200]} maxWidth="200vw">
     <Head>
       <title>{data.Title}</title>
@@ -57,7 +57,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const blogs = await getPosts('blogs');
   blogs.sort(
     (a, b) => new Date(b.data.Date).getTime() - new Date(a.data.Date).getTime(),

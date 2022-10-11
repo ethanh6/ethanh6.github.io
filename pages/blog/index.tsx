@@ -9,7 +9,7 @@ import { getPosts } from '../../lib/api';
 /*   blogs: BlogEntry[]; */
 /* } */
 
-const Blog = ({ blogs }) => {
+const Blog = ({ blogs }: any) => {
   return (
     <Container>
       <Head>
@@ -33,7 +33,7 @@ const Blog = ({ blogs }) => {
 
       <Container mb="2em">
         <Grid gridTemplateColumns={['1fr', '1fr']} gridGap={['3rem', '2rem']}>
-          {blogs.map(({ data }, i: number) => (
+          {blogs.map(({ data }: any, i: number) => (
             <Link key={i} href={'/blog/' + data.Slug}>
               <Card padding={[0]} margin={[0]}>
                 <Grid

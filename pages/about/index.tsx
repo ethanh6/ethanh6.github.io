@@ -28,7 +28,7 @@ import {
 /* import { getPosts, Post } from '@posts'; */
 import { TransparentLink } from '@components';
 
-const About = ({ experiences }): JSX.Element => {
+const About = ({ experiences }: any): JSX.Element => {
   const stacks = React.useMemo(
     () => [
       {
@@ -131,7 +131,7 @@ const About = ({ experiences }): JSX.Element => {
           Experiences
         </Title>
         <Container width="100%">
-          {experiences.map(({ data }, i: number) => (
+          {experiences.map(({ data }: any, i: number) => (
             /* Description, Name, Slug, DateSlug, Order  */
             <TransparentLink href={`/about/${data.Slug}`} key={i}>
               <Grid

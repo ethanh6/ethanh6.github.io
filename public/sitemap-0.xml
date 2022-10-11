@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://shellbear.me</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/about</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/blog</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/note</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/projects</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/about/shareview</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/about/dispatcher</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/about/tresorio</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/about/epitech</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/about/bilberry</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/blog/ethereum-development</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/blog/cpp-development-environment-setup-crypto++</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/blog/why-I-lean-cryptography</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/blog/basic-concepts-in-cryptography</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/blog/cpp-development-environment-setup-OpenSSL</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/blog/build-website-with-react-notion-and-github-2</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/blog/build-website-with-react-notion-and-github-1</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://shellbear.me/blog/where-it-all-started</loc><lastmod>2022-10-08T11:12:08.457Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/about</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/blog</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/note</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/projects</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/about/swe</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/about/cornell</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/about/ucsd</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/blog/basic-concepts-in-cryptography</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/blog/cpp-dev-env-setup-cryptopp</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/blog/why-i-learn-cryptography</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/blog/cpp-dev-env-setup-openssl</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/blog/build-website-with-react-notion-and-github-2</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/blog/where-it-all-started</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://shellbear.me/blog/build-website-with-react-notion-and-github-1</loc><lastmod>2022-10-11T16:45:16.570Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

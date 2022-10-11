@@ -9,7 +9,7 @@ import { Title, Container, Text, Button, Grid, Link, List } from '@components';
 import { getPosts } from '../lib/api';
 
 interface ProjectProps {
-  projects: Post[];
+  projects: any;
 }
 
 const ProjectImage = styled.img`
@@ -59,7 +59,7 @@ const Projects = ({ projects }: ProjectProps): JSX.Element => (
       width="100%"
       gridGap="10%"
     >
-      {projects.map(({ data }) => (
+      {projects.map(({ data }: any) => (
         <ProjectContainer
           key={data.slug}
           flexDirection="column"
