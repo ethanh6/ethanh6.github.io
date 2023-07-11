@@ -21,9 +21,8 @@ jobs:
         run: yarn
 
       - name: Build project
-        run:
-          yarn build
-        env: 
+        run: yarn build
+        env:
           NOTION_KEY: ${{ secrets.NOTION_KEY }}
           NOTION_EXPERIENCE_DATABASE_ID: ${{ secrets.NOTION_EXPERIENCE_DATABASE_ID }}
           NOTION_BLOG_DATABASE_ID: ${{ secrets.NOTION_BLOG_DATABASE_ID }}

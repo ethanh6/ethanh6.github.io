@@ -3,8 +3,8 @@ Title: Basic concepts in cryptography
 Author: Ethan Huang
 Date: '2022-02-10'
 Slug: basic-concepts-in-cryptography
-Tags: [ security, programming, theory ]
-Stack: [ C++, OpenSSL ]
+Tags: [security, programming, theory]
+Stack: [C++, OpenSSL]
 Image:
 ImageUlt:
 Description: how I learned cryptography
@@ -15,19 +15,19 @@ Order: 2
 # 5 main terms:
 
 1. Plaintext 明文
-    1. The original form of the message, that we want to encrypt, represented as `m` or `p`
-    2. The finite set of all possible plaintexts is called “message space”.  represented as `M` or `P`
+   1. The original form of the message, that we want to encrypt, represented as `m` or `p`
+   2. The finite set of all possible plaintexts is called “message space”. represented as `M` or `P`
 2. Ciphertext 密文
-    1. the encrypted text, represented as `c`
-    2. The finite set of all possible ciphertext is called “ciphertext space”.  represented as `C`
+   1. the encrypted text, represented as `c`
+   2. The finite set of all possible ciphertext is called “ciphertext space”. represented as `C`
 3. Key 金鑰
-    1. the encrypted text, represented as `k`
-    2. The finite set of all possible ciphertext is called “key space.”  represented as `K` 
+   1. the encrypted text, represented as `k`
+   2. The finite set of all possible ciphertext is called “key space.” represented as `K`
 4. Encryption Algorithm 加密演算法
-    1. the function that turns plaintext into ciphertext with a key `k`, represented as `E`
-    2. $c=E_k(m)$
+   1. the function that turns plaintext into ciphertext with a key `k`, represented as `E`
+   2. $c=E_k(m)$
 5. Decryption Algorithm 解密演算法
-    1. the function that turns ciphertext  into plaintext with a key `k`, represented as `D`
-    2. $m=D_k(c)$
+   1. the function that turns ciphertext into plaintext with a key `k`, represented as `D`
+   2. $m=D_k(c)$
 
-For a meaningful encryption scene, it’s required that  $m = D_k(E_k(m))$ , which means that under the same encryption scene, the decryption function will always decrypt the original message.
+For a meaningful encryption scene, it’s required that $m = D_k(E_k(m))$ , which means that under the same encryption scene, the decryption function will always decrypt the original message.

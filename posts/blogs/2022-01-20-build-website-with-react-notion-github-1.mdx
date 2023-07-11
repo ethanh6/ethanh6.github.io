@@ -3,8 +3,8 @@ Title: Build website with React, Notion, and GitHub - 1
 Author: Ethan Huang
 Date: '2022-01-20'
 Slug: build-website-with-react-notion-and-github-1
-Tags: [ general, tips, programming ]
-Stack: [ Typescript, Nextdotjs, React, Github, GraphQL ]
+Tags: [general, tips, programming]
+Stack: [Typescript, Nextdotjs, React, Github, GraphQL]
 Image:
 ImageUlt:
 Description: how I built my website
@@ -12,12 +12,11 @@ Series: Personal Website
 Order: 1
 ---
 
-
-***Gatsby*** generates static site, good for contents that don't change
+**_Gatsby_** generates static site, good for contents that don't change
 frequently, like personal websites. It's easy to get started - go through the
 official tutorial, pick a theme as well as a starter, you are good to go.
 
-The concept of ***React*** is about ***Components*** and its hierarchical
+The concept of **_React_** is about **_Components_** and its hierarchical
 structure. Gatsby extends React as a powerful framework based on that idea.
 
 I use Notion as CDN (Content Delivery Network) and luckily there is a Gatsby
@@ -25,6 +24,7 @@ plugin with a nice API. Notion is just a lovely tool that helps me organize my
 life.
 
 ### To use gatsby-source-notion-api:
+
 add the plugin in `gatsby-config.js`
 
 ```jsx
@@ -39,7 +39,7 @@ add the plugin in `gatsby-config.js`
     },
 ```
 
-<br/>
+<br />
 
 and install it
 
@@ -48,18 +48,19 @@ npm install --save gatsby-source-notion-api
 ```
 
 ### How to get notion Database ID:
+
 1. Expand the database as a page (not inline)
 2. Click "Share" (upper right corner), and copy the link, and go to the URL in the browser. (if using notion in the browser, skip this step)
 3. The database id is the string after your user name and before the question mark
+
 ```bash
 https://www.notion.so/{USER_NAME}/{DATABASE_ID}?v={DOES_NOT_MATTER}
 ```
 
-
 ### How to get notion token:
+
 1. In notion app, "Share" → "invite people, email, groups, or integration" → add integration
 2. If already created, "Settings & Members" → Integration → find the integration and click the 3 dots options on the right of the entry → copy internal integration token
-
 
 References:
 https://www.gatsbyjs.com/plugins/gatsby-source-notion-api/?=notion

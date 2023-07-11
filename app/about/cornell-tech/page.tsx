@@ -3,7 +3,6 @@ import { GetStaticPaths, GetStaticPropsResult, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { ComponentProps } from 'react';
-import { getPosts } from '../../lib/api';
 import { Container, Title, Text, Separator, MDXContent } from '@components';
 import Image from 'next/image';
 
