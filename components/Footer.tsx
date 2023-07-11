@@ -22,7 +22,7 @@ const StyledFooter = styled.footer`
 
 const FooterGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-bottom: 30px;
   margin-top: 20px;
@@ -36,10 +36,10 @@ const Footer = (): JSX.Element => {
         url: 'https://github.com/ethanh6',
         icon: SiGithub,
       },
-      {
-        url: 'https://twitter.com/EthanHuang18',
-        icon: SiTwitter,
-      },
+      /* { */
+      /*   url: 'https://twitter.com/EthanHuang18', */
+      /*   icon: SiTwitter, */
+      /* }, */
       {
         url: 'mailto:eh543@cornell.edu',
         icon: MdMail,

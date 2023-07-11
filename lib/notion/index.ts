@@ -1,7 +1,7 @@
 import { Client } from '@notionhq/client';
 import { getEnvironmentVariable } from '../index';
 
-const NOTION_KEY = getEnvironmentVariable('NOTION_KEY');
+const NOTION_KEY = ''; // getEnvironmentVariable('NOTION_KEY');
 
 // instantiate the notion client
 const notion = new Client({
