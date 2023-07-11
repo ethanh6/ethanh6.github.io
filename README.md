@@ -1,5 +1,7 @@
 ### [ethanh6.github.io](https://ethanh6.github.io/)
 
+>It's currentl under construction due to the migration form Nextjs12 to Nextjs13.
+
 ## ✨ Features
 
 - Responsive
