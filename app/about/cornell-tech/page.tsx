@@ -32,7 +32,7 @@ const About = () => (
       </Container>
 
       <Title fontSize={['2rem']} textAlign="center">
-        I'm a CS student at Cornell Tech!
+        I am a CS student at Cornell Tech!
       </Title>
       <Title fontSize={['1.5rem']} textAlign="center">
         Aug. 2021 - May 2022
