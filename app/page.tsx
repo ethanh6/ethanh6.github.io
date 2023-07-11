@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -20,8 +21,8 @@ const Home = (): JSX.Element => (
         <Image
           src="/img/me.jpeg"
           alt="Ethan Huang"
-          width="120px"
-          height="120px"
+          width={120}
+          height={120}
           objectFit="cover"
           className={styles.image}
         />

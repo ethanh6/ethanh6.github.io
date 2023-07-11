@@ -1,8 +1,7 @@
+'use client';
 import React from 'react';
 import { Title, Text, Container, Grid, Link, Card } from '@components';
-import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { getPosts } from '../../lib/api';
 
 // https://react-icons.github.io/react-icons/icons?name=si
 import {
@@ -28,7 +27,7 @@ import {
 /* import { getPosts, Post } from '@posts'; */
 import { TransparentLink } from '@components';
 
-const About = ({ experiences }: any): JSX.Element => {
+const About = (): JSX.Element => {
   const stacks = React.useMemo(
     () => [
       {
@@ -131,51 +130,47 @@ const About = ({ experiences }: any): JSX.Element => {
           Experiences
         </Title>
         <Container width="100%">
-          {experiences.map(({ data }: any, i: number) => (
-            /* Description, Name, Slug, DateSlug, Order  */
-            <TransparentLink href={`/about/${data.Slug}`} key={i}>
-              <Grid
-                key={i}
-                gridTemplateColumns="1fr 4fr"
-                justifyItems="flex-start"
-                gridGap="1rem"
-                paddingY="2rem"
-                borderBottom="1px solid rgba(0,0,0,0.1)"
-              >
-                <Container width="100%">
-                  <Text>{experiences.length - i - 1}</Text>
-                </Container>
-                <Grid width="100%" gridTemplateColumns="4fr 1fr">
-                  <Container
+          <TransparentLink href={`/about/alluring-self`}>
+            <Grid
+              gridTemplateColumns="1fr 4fr"
+              justifyItems="flex-start"
+              gridGap="1rem"
+              paddingY="2rem"
+              borderBottom="1px solid rgba(0,0,0,0.1)"
+            >
+              <Container width="100%">
+                <Text>3</Text>
+              </Container>
+              <Grid width="100%" gridTemplateColumns="4fr 1fr">
+                <Container
+                  width="100%"
+                  alignItems="flex-start"
+                  textAlign="start"
+                >
+                  <Grid
                     width="100%"
-                    alignItems="flex-start"
-                    textAlign="start"
+                    gridTemplateColumns="repeat(1, auto)"
+                    justifyItems="flex-start"
+                    justifyContent="flex-start"
+                    gridGap="1rem"
                   >
-                    <Grid
-                      width="100%"
-                      gridTemplateColumns="repeat(1, auto)"
-                      justifyItems="flex-start"
-                      justifyContent="flex-start"
-                      gridGap="1rem"
+                    <Title fontSize="1.3rem" margin={0} as="h3">
+                      Full Stack Software Engineer
+                    </Title>
+                    <Text
+                      fontSize="smaller"
+                      margin={0}
+                      color="rgba(0, 0, 0, 0.1)"
                     >
-                      <Title fontSize="1.3rem" margin={0} as="h3">
-                        {data.Name}
-                      </Title>
-                      <Text
-                        fontSize="smaller"
-                        margin={0}
-                        color="rgba(0, 0, 0, 0.1)"
-                      >
-                        {data.Date}
-                      </Text>
-                    </Grid>
-                    <Text fontSize="1rem">{data.Description}</Text>
-                  </Container>
-                  <Text fontSize="1.5rem">&rarr;</Text>
-                </Grid>
+                      March 2023 - Now
+                    </Text>
+                  </Grid>
+                  <Text fontSize="1rem">Full Stack Development.</Text>
+                </Container>
+                <Text fontSize="1.5rem">&rarr;</Text>
               </Grid>
-            </TransparentLink>
-          ))}
+            </Grid>
+          </TransparentLink>
         </Container>
       </Container>
 
@@ -209,14 +204,14 @@ const About = ({ experiences }: any): JSX.Element => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const experiences = await getPosts('experiences');
-  experiences.sort((a, b) => b.data.Order - a.data.Order);
-  return {
-    props: {
-      experiences,
-    },
-  };
-};
+// export const getStaticProps: GetStaticProps = async () => {
+//   const experiences = await getPosts('experiences');
+//   experiences.sort((a, b) => b.data.Order - a.data.Order);
+//   return {
+//     props: {
+//       experiences,
+//     },
+//   };
+// };
 
 export default About;

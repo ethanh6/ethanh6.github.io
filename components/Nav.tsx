@@ -66,17 +66,17 @@ const Links = (): JSX.Element => (
 );
 
 const Nav = ({ isOpen, onOpen, onClose }: NavProps): JSX.Element => {
-  const router = useRouter();
-  let navStyle = states['/'];
-
-  if (router.asPath !== '/') {
-    for (const path of Object.keys(states).slice(1)) {
-      if (router.asPath.startsWith(path)) {
-        navStyle = states[path];
-        break;
-      }
-    }
-  }
+  /* const router = useRouter(); */
+  /* let navStyle = states['/']; */
+  /**/
+  /* if (router.asPath !== '/') { */
+  /*   for (const path of Object.keys(states).slice(1)) { */
+  /*     if (router.asPath.startsWith(path)) { */
+  /*       navStyle = states[path]; */
+  /*       break; */
+  /*     } */
+  /*   } */
+  /* } */
 
   return (
     <Grid
@@ -131,7 +131,7 @@ const Nav = ({ isOpen, onOpen, onClose }: NavProps): JSX.Element => {
               height: '85%',
               left: '6px',
               width: '60px',
-              ...navStyle,
+              /* ...navStyle, */
             }}
           />
           <Links />
