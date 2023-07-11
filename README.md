@@ -1,6 +1,6 @@
-## [ethanh6.github.io]()
+### [ethanh6.github.io](https://ethanh6.github.io/)
 
-## ✨ Features
+### ✨ Features
 
 - Responsive
 - RSS Feed
@@ -8,9 +8,9 @@
 - Components made with styled-components
 - GitHub CI to build and lint project
 
-## 📦 Made with
+### 📦 Made with
 
-- next.js
-- typescript
-- styled-components
-- styled-system
+- Next.js 13
+- Typescript
+- Styled-components
+- Styled-system
