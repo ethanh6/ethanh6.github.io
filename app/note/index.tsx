@@ -121,17 +121,17 @@ const formatBookmarks = ({
   );
 
 // fetch the posts from the server-side using the Next.js function: getServerSideProps()
-export async function getServerSideProps() {
-  // Get the posts
-  let { results } = await getNotes();
-  // Return the result
-  return {
-    props: {
-      posts: results,
-    },
-  };
-}
-
+/* export async function getServerSideProps() { */
+/*   // Get the posts */
+/*   let { results } = await getNotes(); */
+/*   // Return the result */
+/*   return { */
+/*     props: { */
+/*       posts: results, */
+/*     }, */
+/*   }; */
+/* } */
+/**/
 // export const getServerSideProps = async (): Promise<
 //   GetStaticPropsResult<BookmarksProps>
 // > => {
