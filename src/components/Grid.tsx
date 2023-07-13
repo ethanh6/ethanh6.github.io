@@ -1,16 +1,12 @@
-import React from "react";
+import React from 'react'
 
 export type GridProps = {
-  children: React.ReactNode;
-  className?: string;
-};
+  children: React.ReactNode
+  className?: string
+}
 
 const Grid: React.FC<GridProps> = ({ children, className }) => {
-  return (
-    <div className={`grid items-center justify-center ${className}`}>
-      {children}
-    </div>
-  );
-};
+  return <div className={`grid items-center justify-center ${className}`}>{children}</div>
+}
 
-export default Grid;
+export default Grid

@@ -25,3 +25,14 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@layer components {
+  .container {
+    @apply flex flex-wrap flex-col;
+  }
+
+  .my-link {
+    @apply ;
+  }
+
+}
