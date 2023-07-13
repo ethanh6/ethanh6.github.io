@@ -54,7 +54,6 @@ const Footer = (): JSX.Element => {
       </div>
       <div className='m-0 text-sm text-gray-500 pt-3 pb-8'>© {new Date().getFullYear()} Ethan Huang</div>
     </footer>
-
   )
 }
 

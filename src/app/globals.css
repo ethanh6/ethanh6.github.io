@@ -32,7 +32,7 @@ body {
   }
 
   .my-link {
-    @apply ;
+    @apply text-current no-underline cursor-pointer z-10 font-medium transition-opacity duration-300 hover:opacity-50;
   }
 
 }

@@ -28,8 +28,8 @@ const Layout: React.FC<LayoutProps> = ({ title = 'Ethan Huang', children }) => {
         />
         <meta property='og:type' content='website' />
       </Head>
-      {/* <Nav isOpen={isOpen} onOpen={() => setIsOpen(true)} onClose={() => setIsOpen(false)} /> */}
-      <div className="flex flex-wrap flex-col">
+      <Nav isOpen={isOpen} onOpen={() => setIsOpen(true)} onClose={() => setIsOpen(false)} />
+      <div className='flex flex-wrap flex-col'>
         {!isOpen && <main>{children}</main>}
         <Footer />
       </div>
