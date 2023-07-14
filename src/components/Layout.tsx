@@ -1,9 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import Container from '@components/Container'
 import Footer from '@components/Footer'
-import Nav from '@components/Nav'
-// import Script from "next/script";
+import TopBar from '@components/TopBar'
 
 type LayoutProps = {
   children?: React.ReactNode
@@ -28,8 +26,8 @@ const Layout: React.FC<LayoutProps> = ({ title = 'Ethan Huang', children }) => {
         />
         <meta property='og:type' content='website' />
       </Head>
-      <Nav isOpen={isOpen} onOpen={() => setIsOpen(true)} onClose={() => setIsOpen(false)} />
       <div className='flex flex-wrap flex-col'>
+        <TopBar isOpen={false} onOpen={() => {}} onClose={() => {}} />
         {!isOpen && <main>{children}</main>}
         <Footer />
       </div>
