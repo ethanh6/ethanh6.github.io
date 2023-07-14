@@ -12,9 +12,9 @@ export interface TopBarProps {
 
 const TopBar = ({ isOpen, onOpen, onClose }: TopBarProps): JSX.Element => {
   return (
-    <div className='w-max flex flex-col item-center justify-center gap-1 p-2 m-10 border-t-4 border-slate-400'>
-      <div className='justify-self-start text-xs md:text-sm pt-3'>Software Engineer</div>
-      <Link href='/' className='my-link text-2xl md:text-3xl justify-start p-1'>
+    <div className='w-max flex flex-col item-center justify-center gap-1 p-2 my-10 mx-14 border-t-4 border-slate-400'>
+      <div className='justify-self-start text-xs md:text-3xl pt-3'>Software Engineer</div>
+      <Link href='/' className='my-link text-2xl md:text-6xl justify-start py-1'>
         Ethan Huang
       </Link>
     </div>

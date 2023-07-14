@@ -2,6 +2,8 @@ import React from 'react'
 import Head from 'next/head'
 import Footer from '@components/Footer'
 import TopBar from '@components/TopBar'
+import SideNav from '@components/SideNav'
+import Link from 'next/link'
 
 type LayoutProps = {
   children?: React.ReactNode
@@ -26,9 +28,14 @@ const Layout: React.FC<LayoutProps> = ({ title = 'Ethan Huang', children }) => {
         />
         <meta property='og:type' content='website' />
       </Head>
-      <div className='flex flex-wrap flex-col'>
+      <div className='flex flex-col h-screen justify-between m-0'>
         <TopBar isOpen={false} onOpen={() => {}} onClose={() => {}} />
-        {!isOpen && <main>{children}</main>}
+        <div className="grid grid-cols-3 gap-1 flex-grow">
+          <SideNav isOpen={false} onOpen={() => {}} onClose={() => {}} />
+          <div className="col-span-2">
+            {!isOpen && <main>{children}</main>}
+          </div>
+        </div>
         <Footer />
       </div>
     </div>

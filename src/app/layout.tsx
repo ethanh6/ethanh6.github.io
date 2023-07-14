@@ -4,8 +4,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { motion } from 'framer-motion'
-import { Component } from 'react'
-import Container from '@/components/Container'
+// import Container from '@/components/Container'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,12 +15,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body>
         <Layout>{children}</Layout>
       </body>
     </html>
   )
-  
-  
 }

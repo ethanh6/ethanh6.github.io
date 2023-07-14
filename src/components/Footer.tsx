@@ -27,8 +27,8 @@ const Footer = (): JSX.Element => {
   )
 
   return (
-    <footer className='w-full h-24 p-16 mt-6 flex flex-col justify-center items-center bottom-0 left-0'>
-      <div className='py-3 flex flex-row gap-6'>
+    <footer className='w-full h-24 p-16 mt-6 flex flex-col justify-center items-start left-0'>
+      {/* <div className='py-3 flex flex-row gap-6'>
         <Link href='/' className='text-current no-underline cursor-pointer'>
           Home
         </Link>
@@ -44,7 +44,7 @@ const Footer = (): JSX.Element => {
         <Link href='/projects' className='text-current no-underline cursor-pointer'>
           Projects
         </Link>
-      </div>
+      </div> */}
       <div className='grid grid-cols-4 gap-6 py-3 justify-center'>
         {links.map(({ url, icon: Icon }) => (
           <a key={url} target='_blank' rel='noreferrer' className='opacity-70' href={url}>
