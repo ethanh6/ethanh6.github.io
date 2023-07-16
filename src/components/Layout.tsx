@@ -29,14 +29,14 @@ const Layout: React.FC<LayoutProps> = ({ title = 'Ethan Huang', children }) => {
         <meta property='og:type' content='website' />
       </Head>
       <div className='flex flex-col h-screen justify-between m-0'>
-        <TopBar isOpen={false} onOpen={() => {}} onClose={() => {}} />
-        <div className="grid grid-cols-3 gap-1 flex-grow">
-          <SideNav isOpen={false} onOpen={() => {}} onClose={() => {}} />
-          <div className="col-span-2">
-            {!isOpen && <main>{children}</main>}
+        <TopBar isOpen={isOpen} onOpen={() => {}} onClose={() => {}} setIsOpen={setIsOpen} />
+        <div className={`grid gap-1 flex-grow ${isOpen ? 'grid-cols-5' : 'grid-cols-3'}`}>
+          <SideNav isOpen={isOpen} onOpen={() => {}} onClose={() => {}} setIsOpen={setIsOpen} />
+          <div className={`${isOpen ? 'col-span-4' : 'col-span-2'}`}>
+            <main>{children}</main>
           </div>
+          <Footer isOpen={isOpen} onOpen={() => {}} onClose={() => {}} />
         </div>
-        <Footer />
       </div>
     </div>
   )

@@ -1,7 +1,51 @@
-export default function Home() {
+import React from 'react';
+import Content from '@components/Content'
+import Link from 'next/link'
+import { compareDesc, format, parseISO } from 'date-fns'
+import { allPosts, Post } from 'contentlayer/generated'
+
+function PostCard(post: Post) {
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <p>Blog page content goes here</p>
-    </main>
+    <div className="mb-8">
+      <h2 className="mb-1 text-xl">
+        <Link href={post.url} className="text-blue-700 hover:text-blue-900 dark:text-blue-400">
+          {post.title}
+        </Link>
+      </h2>
+      <time dateTime={post.date} className="mb-2 block text-xs text-gray-600">
+        {format(parseISO(post.date), 'LLLL d, yyyy')}
+      </time>
+      <div className="text-sm [&>*]:mb-3 [&>*:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: post.body.html }} />
+    </div>
+  )
+}
+
+
+type WritingLinkProps = {
+  title: string;
+  url: string;
+  children?: React.ReactNode;
+}
+
+const WritingLink: React.FC<LayoutProps> = ({ title, url, children }) => {
+  return (
+    <Link href={url}>
+      <div className="text-3xl">{ title }</div>
+      <div className="text-3xl">{ children }</div>
+    </Link>
+  )
+}
+
+export default function Home() {
+  const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+
+  return (
+    <Content title="writings">
+      <div className="grid grid-row-3 gap-5">
+        {posts.map((post, idx) => (
+          <PostCard key={idx} {...post} />
+        ))}
+      </div>
+    </Content>
   )
 }
