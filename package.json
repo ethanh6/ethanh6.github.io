@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier ./src/**/*.tsx --write --config ./.prettierrc"
+    "format": "prettier ./**/*.{css,scss,md,mdx,json} --write --config ./.prettierrc.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",
@@ -18,12 +18,10 @@
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
-    "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
     "eslint-config-next": "13.4.9",
     "framer-motion": "^10.12.18",
     "next": "13.4.9",
-    "next-contentlayer": "^0.3.4",
     "postcss": "8.4.25",
     "react": "18.2.0",
     "react-dom": "18.2.0",
